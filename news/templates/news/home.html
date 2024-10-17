@@ -1,0 +1,250 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+
+
+
+
+
+
+
+
+<style>
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-card {
+  flex: 1 0 calc(33.33% - 20px);
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.news-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.news-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.news-description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: red;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-emphasis-color: white;
+  }
+  .sport-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px white;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+  }
+  .sport-card p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .sport-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    border-radius: 6px;
+  }
+  @media only screen and (max-width: 768px) {
+    .sport-card {
+      width: calc(100% - 20px);
+    }
+  }
+
+
+  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Review container */
+.review-container {
+  margin-bottom: 20px;
+}
+
+/* Review item */
+.review-item {
+  background-color: blue;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px white;
+}
+
+/* Review user */
+.review-user {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Review text */
+.review-text {
+  margin-bottom: 10px;
+}
+
+/* Review form */
+.review-form {
+  margin-bottom: 20px;
+}
+
+/* Review input */
+.review-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+
+</style>
+<div class="news-container">
+  {% for news in newss %}
+    <div class="news-card">
+      <a href="{% url 'newsdetails' news.id %}" class="news-name">{{ news.name }}</a>
+      {% if news.image %}
+      <img class="news-image" src="{{ news.image.url }}" alt="">
+      {% endif %}
+      <p class="news-description">{{ news.description }}</p>
+    </div>
+  {% endfor %}
+</div>
+
+
+
+
+
+<div>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="review" placeholder="Enter review" id="">
+    <input type="submit" value="submit">
+  </form>
+</div>
+
+
+<div class="review-container">
+  <!-- Displaying users -->
+  <div>
+      {% for user in users %}
+      <a href="{% url 'profile' user.id %}">{{ user.username }}</a>
+      {% endfor %}
+  </div>
+  <div>
+    {% for user in users %}
+    <a href="{% url 'profile' user.id %}">{{ user.city }}</a>
+    {% endfor %}
+</div>
+</div>
+
+<div class="review-container">
+  <!-- Displaying reviews -->
+  <div>
+      {% for review in reviews %}
+      <div class="review-item">
+          <div class="review-user">
+              <a href="{% url 'profile' review.user.id %}">{{ review.user.username }}</a>
+          </div>
+          <p class="review-text">{{ review.review }}</p>
+          <hr>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+<footer class="bg-body-tertiary text-center text-lg-start">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Get connected with us on social networks:</h5>
+                <p>Automated personlized news aggregrator</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Useful links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#!">Pricing</a></li>
+                    <li><a href="#!">Settings</a></li>
+                    <li><a href="#!">Orders</a></li>
+                    <li><a href="#!">Help</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase">Contact</h5>
+                <p>Pakistan, pk 10012</p>
+                <p>info@example.com</p>
+                <p>+92 3156020861</p>
+                <p>+92 3454529329</p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.409);">
+        © 2024 Copyright: Automated news .com
+    </div>
+</footer>
+
+
+{% endblock %}

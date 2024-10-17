@@ -1,0 +1,111 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+
+<!---
+<div>
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form.as_p}}
+    <input type="submit">
+  </form>
+</div>
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container-fluid{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px;
+  }
+
+  form {
+    background-color:#8ca3a3;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  @media screen and (max-width: 768px) {
+    form {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container-fluid">
+    <form action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {{form.as_p}}
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  <div>
+    {% include 'news/footer.html' %}
+  </div>
+</body>
+</html>
+
+{% endblock %}
+
+
+<!-- news_form.html
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br>
+  
+  <label for="description">Description:</label><br>
+  <textarea id="description" name="description"></textarea><br>
+  
+  <label for="image">Image:</label><br>
+  <input type="file" id="image" name="image"><br>
+  
+  <label for="category">Category:</label><br>
+  <select id="category" name="catergory">
+      {% for category in categories %}
+          <option value="{{ category.id }}">{{ category.title }}</option>
+      {% endfor %}
+  </select><br>
+  
+  <label for="source">Source:</label><br>
+  <input type="text" id="source" name="source" value="ary news"><br>
+  
+  <button type="submit">Submit</button>
+</form> -->

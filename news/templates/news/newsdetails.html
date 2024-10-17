@@ -1,0 +1,81 @@
+
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+<!--<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 news-erea">
+      <div class="card text-bg-dark mt-5 shadow-lg border-2 border-success">
+        <img src="{{news.image.url}}" class="card-img" alt="...">
+        <div class="card-img-overlay">
+          <h5 class="card-title" text-danger>
+            <h1 >{{news.name}}</h1>
+            <p >{{news.description}}</p>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News Details</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .news-erea {
+    padding: 20px;
+  }
+
+  .card {
+    border: none;
+    border-radius: 0;
+  }
+
+  .card-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-title {
+    color: #333; /* Text color */
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .card-text {
+    color: #666; /* Text color */
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .news-erea {
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 news-erea">
+      <div class="card mt-5 shadow-lg border-2 border-success">
+        <img src="{{news.image.url}}" class="card-img" alt="News Image">
+        <div class="card-body">
+          <h1 class="card-title">{{news.name}}</h1>
+          <p class="card-text">{{news.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  {% include 'news/footer.html' %}
+</div>
+</body>
+</html>
+
+{% endblock %}

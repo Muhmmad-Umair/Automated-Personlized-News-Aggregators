@@ -1,0 +1,105 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color:white;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Search form styling */
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        /* News items styling */
+        .news-item {
+            background-color:white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .news-item h1 {
+            margin-bottom: 10px;
+        }
+
+        .news-item hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        /* Responsive styling */
+        @media only screen and (max-width: 600px) {
+            input[type="text"] {
+                width: calc(100% - 20px); /* Adjust for padding */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <form action="" method="get">
+        <input type="text" name="q" placeholder="Search">
+    </form>
+</div>
+
+<div>
+    {% for news in newss %}
+    <div class="news-item">
+        <img height="350" width="400" src="{{news.image.url}}" alt="">
+        <h1>{{news.name}}</h1>
+        <p>{{news.description}}</p>
+        <p>{{news.title}}</p>
+        <hr>
+    </div>
+    {% endfor %}
+</div>
+<div>
+    {% include 'news/footer.html' %}
+  </div>
+</body>
+</html>
+{% endblock %}

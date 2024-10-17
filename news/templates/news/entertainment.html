@@ -1,0 +1,74 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entertainments Page</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .sport-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+  }
+  .sport-card p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .sport-card img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    border-radius: 6px;
+  }
+  @media only screen and (max-width: 768px) {
+    .sport-card {
+      width: calc(100% - 20px);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  {% for Entertainments in entertainment %}
+  <div class="entertainment-card">
+    <p>{{Entertainments.name}}</p>
+    {% if Entertainments.image %}
+    <img src="{{Entertainments.image.url}}" alt="">
+    {% endif %}
+    <p>{{Entertainments.description}}</p>
+    <a href="{% url 'newsdetails' Entertainments.id %}">open</a>
+  </div>
+  {% endfor %}
+</div>
+<div>
+  {% include 'news/footer.html' %}
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,137 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Reset default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #c94c4c;;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+        }
+
+        /* Navigation styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* Article styling */
+        article {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        article img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        article p {
+            margin-bottom: 10px;
+        }
+
+        article a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        article a:hover {
+            color: #666;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        /* Responsive styling */
+        @media only screen and (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>News Headlines</h1>
+</header>
+
+<nav>
+    <a href="{% url 'headlines' %}?category=health">Health</a>
+    <a href="{% url 'headlines' %}?category=technology">Technology</a>
+    <a href="{% url 'headlines' %}?category=sports">Sports</a>
+</nav>
+
+<div>
+    {% for news in articles %}
+    <article>
+        <img src="{{news.urlToImage}}" alt="">
+        <p>{{news.source.id}}</p>
+        <p>{{news.source.name}}</p>
+        <p>{{news.title}}</p>
+        <p>{{news.author}}</p>
+        <p>{{news.description}}</p>
+        <p>{{news.publishedAt}}</p>
+        <p>{{news.content}}</p>
+        <a href="{{news.url}}">Read more</a>
+    </article>
+    <hr>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+{% endblock %}

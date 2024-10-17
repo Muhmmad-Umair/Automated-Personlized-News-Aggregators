@@ -1,0 +1,40 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+ 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sports Page</title>
+<style>
+ 
+</style>
+</head>
+<body>
+
+<div class="container">
+  {% for sport in sports %}
+  <div class="sport-card">
+    <p>{{sport.name}}</p>
+    {% if sport.image %}
+    <img src="{{sport.image.url}}" alt="">
+    {% endif %}
+    <p>{{sport.description}}</p>
+    <a href="{% url 'newsdetails' sport.id %}">open</a>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+<div>
+  {% include 'news/footer.html' %}
+</div>
+</body>
+</html>
+{% endblock %}

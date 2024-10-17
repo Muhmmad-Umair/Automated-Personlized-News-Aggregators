@@ -1,0 +1,245 @@
+{% for message in messages %}
+
+<p>{{message}}</p>
+
+{% endfor %}
+<!--
+<div>
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" />
+    <input type="email" name="email" />
+    <input type="password" name="password" />
+    <input type="password" name="password1" />
+    <label>Sports</label>
+    <input type="checkbox" name="choice" value="sports" />
+    <label>Politics</label>
+    <input type="checkbox" name="choice" value="politics" />
+    <label>Technology</label>
+    <input type="checkbox" name="choice" value="technology" />
+    <label>Health</label>
+    <input type="checkbox" name="choice" value="health" />
+    <label>Entertainment</label>
+    <input type="checkbox" name="choice" value="entertainment" />
+    <label>Weather</label>
+    <input type="checkbox" name="choice" value="weather" />
+    <label>Business</label>
+    <input type="checkbox" name="choice" value="business" />
+    <input type="submit" value="submit" />
+  </form>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Registration Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('static/css/bg.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #c94c4c;
+    color: #fff;
+    border: 1px solid #ccc;
+    
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .container form {
+    display: grid;
+    grid-gap: 10px;
+  }
+
+  .container form label {
+    display: block;
+  }
+
+  .container form input[type="text"],
+  .container form input[type="email"],
+  .container form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .container form input[type="checkbox"] {
+    margin-right: 5px;
+  }
+
+  .container form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .container {
+      margin: 20px;
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" />
+    <input type="text" name="city" placeholder="cityname" />
+
+    <input type="email" name="email" placeholder="Email" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="password" name="password1" placeholder="Confirm Password" />
+    <label><input type="checkbox" name="choice" value="sports" /> Sports</label>
+    <label><input type="checkbox" name="choice" value="politics" /> Politics</label>
+    <label><input type="checkbox" name="choice" value="technology" /> Technology</label>
+    <label><input type="checkbox" name="choice" value="health" /> Health</label>
+    <label><input type="checkbox" name="choice" value="entertainment" /> Entertainment</label>
+    <label><input type="checkbox" name="choice" value="weather" /> Weather</label>
+    <label><input type="checkbox" name="choice" value="business" /> Business</label>
+  
+    <input type="submit" value="Submit" />
+    <p>Already have a account <a href="{% url 'login_page' %}">Login</a></p>
+  </form>
+  
+</div>
+
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Registration Form</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('static/css/bg.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+  }
+
+  .container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #c94c4c;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .container form {
+    display: grid;
+    grid-gap: 10px;
+  }
+
+  .container form label {
+    display: block;
+  }
+
+  .container form input[type="text"],
+  .container form input[type="email"],
+  .container form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .container form input[type="checkbox"] {
+    margin-right: 5px;
+  }
+
+  .container form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .container {
+      margin: 20px;
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <form id="registrationForm" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" />
+    <input type="text" name="city" placeholder="City Name" />
+    <input type="email" name="email" placeholder="Email" />
+    <input type="password" name="password" placeholder="Password" />
+    <input type="password" name="password1" placeholder="Confirm Password" />
+    <label><input type="checkbox" name="choice" value="sports" /> Sports</label>
+    <label><input type="checkbox" name="choice" value="politics" /> Politics</label>
+    <label><input type="checkbox" name="choice" value="technology" /> Technology</label>
+    <label><input type="checkbox" name="choice" value="health" /> Health</label>
+    <label><input type="checkbox" name="choice" value="entertainment" /> Entertainment</label>
+    <label><input type="checkbox" name="choice" value="weather" /> Weather</label>
+    <label><input type="checkbox" name="choice" value="business" /> Business</label>
+    <input type="submit" value="Submit" />
+    <p>Already have an account? <a href="{% url 'login_page' %}">Login</a></p>
+  </form>
+</div>
+
+<script>
+  // JavaScript for enhancing responsiveness and interaction
+
+  // Example: Adjusting layout based on screen width
+  function adjustLayout() {
+    var form = document.getElementById('registrationForm');
+    if (window.innerWidth <= 600) {
+      form.style.padding = '10px';
+    } else {
+      form.style.padding = '20px';
+    }
+  }
+
+  // Adjust layout on page load and when the window resizes
+  window.addEventListener('load', adjustLayout);
+  window.addEventListener('resize', adjustLayout);
+</script>
+
+</body>
+</html>
+
+

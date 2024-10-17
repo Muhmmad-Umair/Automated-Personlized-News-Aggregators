@@ -1,0 +1,102 @@
+{% extends 'pk.html' %} 
+{% load static %} 
+{% block content %} 
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help and Support</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('static/css/bg.jpg');
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.helps-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.help-item {
+    margin-bottom: 15px;
+}
+
+.help-item a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.help-item a:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+    .form-container,
+    .helps-container {
+        padding: 10px;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="submit"] {
+        width: calc(100% - 20px);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" name="question" placeholder="How can I help you">
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="helps-container">
+            {% for help in helps %}
+                <div class="help-item">
+                    <a href="">{{ help.user.username }}</a>
+                    <p>{{ help.question }}</p>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
